@@ -38,7 +38,7 @@ export default function SubscribePage() {
         </div>
 
         <div className="mt-16">
-          <h2 className="font-display text-xl font-bold text-tomfit-950 text-center mb-8">What You'll Receive</h2>
+          <h2 className="font-display text-xl font-bold text-tomfit-950 text-center mb-8">What You&apos;ll Receive</h2>
           <div className="grid md:grid-cols-3 gap-5">
             {[
               { icon: '💪', title: 'Workout Tips', desc: 'Weekly training insights and routines' },
