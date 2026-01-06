@@ -18,10 +18,16 @@ function setCookie(name: string, value: string) {
   document.cookie = `${name}=${encodeURIComponent(value)}; Path=/; Max-Age=${60 * 60 * 24 * 365}`
 }
 
-const languageData: Record<Lang, { flag: string; name: string }> = {
-  en: { flag: '🇬🇧', name: 'English' },
-  de: { flag: '🇩🇪', name: 'Deutsch' },
-  pl: { flag: '🇵🇱', name: 'Polski' },
+const FLAG_IMAGES: Record<Lang, string> = {
+  en: '/flags/gb.svg',
+  de: '/flags/de.svg',
+  pl: '/flags/pl.svg',
+}
+
+const languageData: Record<Lang, { name: string }> = {
+  en: { name: 'English' },
+  de: { name: 'Deutsch' },
+  pl: { name: 'Polski' },
 }
 
 export default function Header() {
@@ -46,7 +52,6 @@ export default function Header() {
   }, [])
 
   const dict = useMemo(() => t(lang), [lang])
-  const currentLang = languageData[lang]
 
   const selectLang = (newLang: Lang) => {
     setLang(newLang)
@@ -81,7 +86,9 @@ export default function Header() {
                 aria-haspopup="listbox"
                 className="h-11 px-3 rounded-lg border border-gray-200 bg-white hover:bg-gray-50 transition-colors flex items-center gap-2 text-sm font-medium text-gray-700"
               >
-                <span className="text-xl">{currentLang.flag}</span>
+                <span className="inline-block bg-gray-200 rounded-sm p-0.5">
+                  <Image src={FLAG_IMAGES[lang]} alt={languageData[lang].name} width={24} height={16} className="block" />
+                </span>
                 <svg 
                   className={`w-4 h-4 text-gray-400 transition-transform ${isOpen ? 'rotate-180' : ''}`} 
                   fill="none" 
@@ -96,7 +103,7 @@ export default function Header() {
               {isOpen && (
                 <div className="absolute right-0 mt-2 w-44 bg-white rounded-lg shadow-lg border border-gray-100 py-1 z-50">
                   {LANGS.map((langOption) => {
-                    const { flag, name } = languageData[langOption]
+                    const { name } = languageData[langOption]
                     const isSelected = langOption === lang
                     return (
                       <button
@@ -107,7 +114,9 @@ export default function Header() {
                           isSelected ? 'bg-tomfit-50 text-tomfit-600' : 'text-gray-700'
                         }`}
                       >
-                        <span className="text-xl">{flag}</span>
+                        <span className="inline-block bg-gray-200 rounded-sm p-0.5">
+                          <Image src={FLAG_IMAGES[langOption]} alt={name} width={24} height={16} className="block" />
+                        </span>
                         <span className="font-medium">{name}</span>
                         {isSelected && (
                           <svg className="w-4 h-4 ml-auto text-tomfit-500" fill="currentColor" viewBox="0 0 20 20">
