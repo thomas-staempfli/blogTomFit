@@ -47,6 +47,7 @@ At TomFit, we put this science into practice. Our training environment and equip
 - Grahn, Cao, Heller (2012) — Work volume and strength training responses with thermal extraction. Journal of Applied Physiology 112(11):1797-1804. https://pubmed.ncbi.nlm.nih.gov/22076097/
 - Kenny et al. (2022) — Heat stress and exercise performance: physiological mechanisms and implications for human health. Physiological Reviews 102(4):1627-1680. https://pubmed.ncbi.nlm.nih.gov/35020830/`,
     coverImage: '/Sweat.png',
+    coverImageI18n: { de: '/Sweat.de.png', pl: '/Sweat.pl.png' },
     introImage: '/SweatText_Picture.png',
     date: '2025-12-14',
     author: { name: 'Thomas Stämpfli', avatar: '/thomas-stampfli_inSuit.jpg' },
